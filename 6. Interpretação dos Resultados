@@ -1,0 +1,15 @@
+Questão 1 - Qual é a diferença entre uma imagem Docker e um contêiner em execução?
+
+R: A imagem Docker é um modelo somente leitura que contém tudo o que a aplicação precisa para rodar sistema de arquivos, bibliotecas, dependências e configurações. Ela fica parada, apenas armazenada. O contêiner em execução é uma instância viva criada a partir dessa imagem, com processos rodando e uma camada de escrita própria. A partir de uma mesma imagem (como a `nginx`) é possível criar vários contêineres.
+
+Questão 2 - Qual é a diferença entre uma imagem Docker e um contêiner em execução?
+
+R: A imagem é o "molde" ou pacote imutável da aplicação, enquanto o contêiner é a aplicação efetivamente em funcionamento, criada a partir desse molde. A imagem não executa nada por si só. O contêiner executa, pode ser iniciado, parado e removido, e as alterações feitas nele (como a página HTML personalizada com meu nome) não modificam a imagem original.
+
+Questão 3 - O que aconteceu quando você excluiu um Pod? Por que isso aconteceu?
+
+R: Quando excluí um Pod, o Kubernetes criou automaticamente um novo Pod para substituí-lo, e a lista voltou a mostrar 3 Pods em execução. Isso aconteceu porque os Pods eram gerenciados por um Deployment, que usa um ReplicaSet para manter sempre o número de réplicas desejado (3). Ao detectar que havia menos Pods do que o esperado, o controlador criou outro para corrigir a diferença. Esse comportamento é a autorrecuperação (self-healing).
+
+Questão 4 - Qual é a finalidade de um Service no Kubernetes?
+
+R: O Service fornece um endereço de rede estável (IP e nome DNS) para acessar um conjunto de Pods e distribui o tráfego entre eles (balanceamento de carga). Como os Pods são temporários e seus IPs mudam quando são recriados, o Service garante que outras aplicações consigam se comunicar com eles sempre pelo mesmo nome, como no teste em que o Pod `teste` acessou o NGINX por `comunicado-service`.

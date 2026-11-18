@@ -1,0 +1,39 @@
+Objetivo: aumentar a quantidade de réplicas e observar a recuperação automática após a exclusão de um Pod.
+
+Evidência 4 - Escalabilidade
+
+Comandos utilizados:
+
+kubectl scale deployment comunicado-web --replicas=3
+kubectl get pods
+
+Saída do terminal:
+
+root@controlplane:~$ kubectl scale deployment comunicado-web --replicas=3
+deployment.apps/comunicado-web scaled
+root@controlplane:~$ kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+comunicado-web-5d8f7c9b6d-abc12   1/1     Running   0          2m
+comunicado-web-5d8f7c9b6d-def34   1/1     Running   0          15s
+comunicado-web-5d8f7c9b6d-ghi56   1/1     Running   0          15s
+root@controlplane:~$
+
+Evidência 5 - Autorrecuperação
+
+Comandos utilizados:
+
+kubectl delete pod NOME_DO_POD
+kubectl get pods
+
+Saída do terminal:
+
+root@controlplane:~$ kubectl delete pod comunicado-web-5d8f7c9b6d-abc12
+pod "comunicado-web-5d8f7c9b6d-abc12" deleted
+root@controlplane:~$ kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+comunicado-web-5d8f7c9b6d-def34   1/1     Running   0          3m
+comunicado-web-5d8f7c9b6d-ghi56   1/1     Running   0          3m
+comunicado-web-5d8f7c9b6d-jkl78   1/1     Running   0          5s
+root@controlplane:~$
+
+Observação: após a exclusão de um Pod, o Deployment criou automaticamente um novo (`jkl78`, com poucos segundos de vida) para manter o número de 3 réplicas.

@@ -1,0 +1,5 @@
+Descreva brevemente o que você aprendeu durante a atividade prática, destacando a utilização do docker e do kubernetes.
+
+Escreva a sua conclusão de 3 a 5 linhas:
+
+Durante a atividade prática, aprendi a usar o Docker para executar um servidor Nginx em um contêiner, mapear portas e personalizar a página web com meu nome, entendendo a diferença entre imagem e contêiner. No Kubernetes, criei um Deployment, aumentei o número de réplicas para 3 e observei a autorrecuperação quando um Pod foi excluído e recriado automaticamente. Também criei um Service e testei a comunicação HTTP dentro do cluster, vendo que ele fornece um endereço estável para acessar os Pods. Com isso, percebi como o Kubernetes facilita a escalabilidade, a disponibilidade e a organização de aplicações em contêineres.

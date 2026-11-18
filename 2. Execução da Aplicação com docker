@@ -1,0 +1,27 @@
+Objetivo: executar um servidor Nginx utilizando Docker, verificar seu funcionamento e personalizar a página web.
+
+Evidência 1 - Contêiner em execução
+
+Comando utilizado:
+
+docker ps
+
+Saída do terminal:
+
+root@controlplane:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+a1b2c3d4e5f6   nginx     "/docker-entrypoint.…"   10 seconds ago   Up 9 seconds    0.0.0.0:8090->80/tcp, [::]:8090->80/tcp   meu-nginx
+root@controlplane:~$
+
+Evidência 2 - Página personalizada
+
+omando utilizado:
+
+curl http://localhost:8090
+
+Saída do terminal:
+
+
+root@controlplane:~$ curl http://localhost:8090
+<h1>Olá! Meu nome é Mayran</h1>
+root@controlplane:~$

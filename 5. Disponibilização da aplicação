@@ -1,0 +1,30 @@
+Objetivo: criar um Service e verificar a comunicação HTTP dentro do cluster Kubernetes.
+
+Evidência 6 - Service e acesso HTTP
+
+Comandos utilizados:
+
+bash
+kubectl get services
+kubectl run teste --image=curlimages/curl --rm -it --restart=Never -- curl http://comunicado-service
+
+Saída do terminal:
+
+root@controlplane:~$ kubectl get services
+NAME                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+comunicado-service  ClusterIP   10.96.120.45   <none>        80/TCP    30s
+kubernetes          ClusterIP   10.96.0.1      <none>        443/TCP   20d
+
+root@controlplane:~$ kubectl run teste --image=curlimages/curl --rm -it --restart=Never -- curl http://comunicado-service
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+...
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+...
+</html>
+pod "teste" deleted
+root@controlplane:~$

@@ -1,0 +1,14 @@
+Objetivo: criar um Deployment e verificar os Pods gerenciados pelo Kubernetes.
+
+Evidência 3 - Deployment e Pod
+
+Comando utilizado:
+
+kubectl get pods
+
+Saída do terminal:
+
+root@controlplane:~$ kubectl get pods
+NAME                         READY   STATUS    RESTARTS   AGE
+meu-nginx-5d8f7c9b6d-x2k4j   1/1     Running   0          20s
+root@controlplane:~$
